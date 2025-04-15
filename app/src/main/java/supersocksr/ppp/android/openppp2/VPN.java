@@ -89,16 +89,6 @@ public final class VPN {
         return libopenppp2.c.is_default_flash_type_of_service();
     }
 
-    // Set the VPN to tun safe queue mode.
-    public static boolean vpn_set_tun_safe_queue(boolean value) {
-        return libopenppp2.c.set_tun_safe_queue(value);
-    }
-
-    // Get the VPN to tun safe queue mode, return < 0 Fails，= 0 Unsafe，> 0 Safety.
-    public static int vpn_get_tun_safe_queue() {
-        return libopenppp2.c.is_tun_safe_queue();
-    }
-
     // Get the ip route list that the current VPN configuration bypasses.
     public static String vpn_get_bypass_ip_list() {
         return libopenppp2.c.get_bypass_ip_list();
@@ -147,13 +137,13 @@ public final class VPN {
     }
 
     // Set the VPN virtual network interface information.
-    public static int vpn_set_network_interface(int tun, boolean vnet, boolean block_quic, boolean static_mode, String ip, String mask, String gw) {
-        return libopenppp2.c.set_network_interface(tun, vnet, block_quic, static_mode, ip, mask, gw);
+    public static int vpn_set_network_interface(int tun, int mux, boolean vnet, boolean block_quic, boolean static_mode, String ip, String mask, String gw) {
+        return libopenppp2.c.set_network_interface(tun, mux, vnet, block_quic, static_mode, ip, mask, gw);
     }
 
     // Set the VPN virtual network interface information.
     public static int vpn_set_network_interface(@NonNull NetworkInterface network_interface) {
-        return libopenppp2.c.set_network_interface(network_interface.tun, network_interface.vnet, network_interface.block_quic, network_interface.static_mode, network_interface.ip, network_interface.mask, network_interface.gw);
+        return libopenppp2.c.set_network_interface(network_interface.tun, network_interface.mux, network_interface.vnet, network_interface.block_quic, network_interface.static_mode, network_interface.ip, network_interface.mask, network_interface.gw);
     }
 
     // Get the Ethernet remote configuration information of the current VPN.

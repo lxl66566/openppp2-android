@@ -80,7 +80,7 @@ public final class libopenppp2 {
 
     public native boolean set_dns_rules_list(String rules);
 
-    public native int set_network_interface(int tun, boolean vnet, boolean block_quic, boolean static_mode, String ip, String mask, String gw);
+    public native int set_network_interface(int tun, int mux, boolean vnet, boolean block_quic, boolean static_mode, String ip, String mask, String gw);
 
     public native int set_app_configuration(String configurations /* configurations is appsettings.json */);
 
@@ -121,10 +121,6 @@ public final class libopenppp2 {
     public native String prefix_to_netmask(boolean v4_or_v6, int prefix_);
 
     public native int socket_get_socket_type(int fd_);
-
-    public native boolean set_tun_safe_queue(boolean safe_mode);
-
-    public native int is_tun_safe_queue();
 
     public interface libopenppp2_internal {
         boolean post_exec(int sequence);
