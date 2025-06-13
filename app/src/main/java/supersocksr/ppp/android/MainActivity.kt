@@ -164,7 +164,12 @@ class MainActivity : PppVpnActivity() {
 
         udp.apply {
           inactive.timeout = Macro.PPP_UDP_INACTIVE_TIMEOUT
-          dns.timeout = Macro.PPP_DEFAULT_DNS_TIMEOUT
+          dns.apply {
+            timeout = Macro.PPP_DEFAULT_DNS_TIMEOUT
+            ttl = Macro.PPP_DEFAULT_DNS_TTL
+            cache = true
+          }
+
           static_.apply {
             quic = true
             dns = true
